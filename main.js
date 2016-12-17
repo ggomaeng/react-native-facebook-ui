@@ -12,7 +12,7 @@ import {
   StackNavigation,
 } from '@exponent/ex-navigation';
 import {
-  FontAwesome,
+  Ionicons,
 } from '@exponent/vector-icons';
 
 import Router from './navigation/Router';
@@ -31,12 +31,11 @@ class AppContainer extends React.Component {
     try {
       await cacheAssetsAsync({
         images: [
-          require('./assets/images/exponent-wordmark.png'),
+          require('./screens/img/bob.png'),
         ],
         fonts: [
-          FontAwesome.font,
-          {'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')},
-        ],
+            Ionicons.font,
+        ]
       });
     } catch(e) {
       console.warn(

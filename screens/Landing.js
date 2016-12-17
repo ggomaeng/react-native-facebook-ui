@@ -5,10 +5,14 @@ import React, {Component} from 'react';
 import {
     View,
     Text,
+    Dimensions,
     RefreshControl,
     ScrollView,
+    ListView,
     StyleSheet
 } from 'react-native';
+
+const {width, height} = Dimensions.get('window');
 
 import Colors from '../constants/Colors';
 import SearchBar from './common/search-bar';
@@ -16,10 +20,33 @@ import ButtonBar from './common/button-bar';
 import OnYourMind from './common/onYourMind';
 import NewsFeedItem from './common/newsfeed-item';
 
+const data = ['0', '1', '1'];
+
 export default class Landing extends Component {
-    state = {
-        refreshing: false,
-    };
+    constructor(props) {
+        super(props);
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        this.state = {
+            refreshing: false,
+            loading: false,
+            content_height: 0,
+            dataSource: ds.cloneWithRows(data)
+        };
+
+        this._onScroll = this._onScroll.bind(this);
+    }
+
+    componentDidMount() {
+        setTimeout(() => {this.measureView()}, 0);
+    }
+
+    measureView() {
+        this.refs.view.measure((a, b, w, h, px, py) => {
+            console.log(h);
+            this.setState({content_height: h});
+        })
+    }
+
 
     _onRefresh() {
         this.setState({refreshing: true});
@@ -28,24 +55,66 @@ export default class Landing extends Component {
         }, 1500)
     }
 
+    _renderRow(data) {
+
+        if (data == '0') {
+            return <OnYourMind/>
+        }
+
+        return <NewsFeedItem/>
+    }
+
+    loadMore() {
+        if(this.state.loading) {
+            return
+        }
+
+        console.log('should load more');
+        this.setState({loading: true});
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        data.push('1');
+        data.push('1');
+
+        setTimeout(() => {
+            this.setState({dataSource: ds.cloneWithRows(data), loading: false});
+        }, 1000);
+
+
+
+
+    }
+
+    _onScroll(event) {
+        const {content_height} = this.state;
+        const e = event.nativeEvent;
+        const l_height = e.contentSize.height;
+        const offset = e.contentOffset.y;
+
+        if(offset + content_height >= l_height) {
+            console.log('end');
+            this.loadMore();
+        }
+
+        // console.log(e);
+    }
 
     render() {
         return (
-            <View style={styles.container}>
+            <View ref='view' style={styles.container}>
                 <SearchBar/>
                 <ButtonBar/>
-                <ScrollView
+                <ListView
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refreshing}
                             onRefresh={this._onRefresh.bind(this)}
                         />
-                    }>
-                    <OnYourMind/>
-                    <NewsFeedItem/>
-                    <NewsFeedItem/>
+                    }
 
-                </ScrollView>
+                    onScroll={this._onScroll}
+                    dataSource={this.state.dataSource}
+                    renderRow={(data) => this._renderRow(data)}
+                />
             </View>
         )
     }
