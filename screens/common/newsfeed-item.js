@@ -128,9 +128,9 @@ const styles = StyleSheet.create({
     },
 
     name: {
-        fontSize: 16,
+        fontSize: 14,
         color: 'black',
-        fontWeight: '700'
+        fontWeight: '600'
     },
 
     time: {

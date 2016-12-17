@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react';
 import {
+    Animated,
     View,
     Text,
     Dimensions,
@@ -19,8 +20,9 @@ import SearchBar from './common/search-bar';
 import ButtonBar from './common/button-bar';
 import OnYourMind from './common/onYourMind';
 import NewsFeedItem from './common/newsfeed-item';
+import _ from 'lodash';
 
-const data = ['0', '1', '1'];
+const data = ['0', '1', '1', '1'];
 
 export default class Landing extends Component {
     constructor(props) {
@@ -29,11 +31,14 @@ export default class Landing extends Component {
         this.state = {
             refreshing: false,
             loading: false,
+            header_height: new Animated.Value(96),
             content_height: 0,
             dataSource: ds.cloneWithRows(data)
         };
 
+        this.offsetY = 0;
         this._onScroll = this._onScroll.bind(this);
+        this.loadMore = _.debounce(this.loadMore, 300);
     }
 
     componentDidMount() {
@@ -42,9 +47,13 @@ export default class Landing extends Component {
 
     measureView() {
         this.refs.view.measure((a, b, w, h, px, py) => {
-            console.log(h);
             this.setState({content_height: h});
-        })
+        });
+
+        this.refs.header.measure((a, b, w, h, px, py) => {
+            console.log(h);
+            this.setState({header_height: h})
+        });
     }
 
 
@@ -65,22 +74,12 @@ export default class Landing extends Component {
     }
 
     loadMore() {
-        if(this.state.loading) {
-            return
-        }
-
         console.log('should load more');
         this.setState({loading: true});
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         data.push('1');
         data.push('1');
-
-        setTimeout(() => {
-            this.setState({dataSource: ds.cloneWithRows(data), loading: false});
-        }, 1000);
-
-
-
+        this.setState({dataSource: ds.cloneWithRows(data)});
 
     }
 
@@ -89,6 +88,16 @@ export default class Landing extends Component {
         const e = event.nativeEvent;
         const l_height = e.contentSize.height;
         const offset = e.contentOffset.y;
+
+        if(offset > this.offsetY) {
+            console.log('scrolling down');
+            //if
+        } else {
+            console.log('scrolling up');
+        }
+
+        this.offsetY = offset;
+
 
         if(offset + content_height >= l_height) {
             console.log('end');
@@ -101,8 +110,10 @@ export default class Landing extends Component {
     render() {
         return (
             <View ref='view' style={styles.container}>
-                <SearchBar/>
-                <ButtonBar/>
+                <View ref='header'>
+                    <SearchBar/>
+                    <ButtonBar/>
+                </View>
                 <ListView
                     refreshControl={
                         <RefreshControl

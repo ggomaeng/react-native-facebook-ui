@@ -5,6 +5,14 @@ const profile = [
     {
         source: require('../img/bob.png'),
         name: 'Bob the Builder'
+    },
+    {
+        source: require('../img/cookiemonster.jpeg'),
+        name: 'Cookie Monster'
+    },
+    {
+        source: require('../img/elmo.jpg'),
+        name: 'Elmo'
     }
 ]
 
