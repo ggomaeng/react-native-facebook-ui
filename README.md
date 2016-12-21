@@ -7,7 +7,7 @@ Feel free to contribute the Android version.
 I was inspired by an app I use everyday--Facebook! :-)
 
 ###Demo
-![demo](https://raw.githubusercontent.com/ggomaeng/react-native-facebook-ui/master/demo.gif)
+![demo](https://raw.githubusercontent.com/ggomaeng/react-native-facebook-ui/master/ui_demo.gif)
 
 ## Try it out
 
