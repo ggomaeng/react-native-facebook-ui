@@ -32,7 +32,9 @@ class AppContainer extends React.Component {
       await cacheAssetsAsync({
         images: [
           require('./screens/img/bob.png'),
-            require('./screens/img/cookiemonster.jpeg')
+          require('./screens/img/cookiemonster.jpeg'),
+          require('./screens/img/elmo.jpg'),
+          require('./screens/img/me.png')
         ],
         fonts: [
             Ionicons.font,

@@ -14,9 +14,8 @@ export default class onYourMind extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.profile}/>
-                <TextInput placeholder={"What's on your mind?"} style={styles.input}/>
-
+                <Image source={require('../img/me.png')} style={styles.profile}/>
+                <TextInput onFocus={this.props.onFocus} placeholder={"What's on your mind?"} style={styles.input}/>
             </View>
         )
     }

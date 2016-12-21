@@ -4,15 +4,18 @@
 const profile = [
     {
         source: require('../img/bob.png'),
-        name: 'Bob the Builder'
+        name: 'Bob the Builder',
+        online: false,
     },
     {
         source: require('../img/cookiemonster.jpeg'),
-        name: 'Cookie Monster'
+        name: 'Cookie Monster',
+        online: true,
     },
     {
         source: require('../img/elmo.jpg'),
-        name: 'Elmo'
+        name: 'Elmo',
+        online: false,
     }
 ]
 
