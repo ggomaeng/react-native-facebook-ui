@@ -27,7 +27,18 @@ import CreatePost from './common/create-post';
 import Drawer from './common/drawer';
 import _ from 'lodash';
 
-const data = ['0', '1', '1', '1'];
+//1 is regular post, 2 is image
+const data = ['0',
+    {type: 'image', images: ['1']},
+    {type: 'image', images: ['1', '2']},
+    {type: 'image', images: ['1', '2', '3']},
+    {type: 'image', images: ['1', '2', '3', '4']},
+    {type: 'image', images: ['1', '2', '3', '4', '5']},
+    {type: 'image', images: ['1', '2', '3', '4', '5', '6']},
+    {type: 'post'},
+    {type: 'post'},
+    {type: 'post'}
+    ];
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 export default class Landing extends Component {
@@ -76,7 +87,7 @@ export default class Landing extends Component {
             return <OnYourMind onFocus={() => this.setState({modal: true})}/>
         }
 
-        return <NewsFeedItem/>
+        return <NewsFeedItem data={data}/>
     }
 
     renderModal() {
@@ -85,7 +96,7 @@ export default class Landing extends Component {
                 animationType={"slide"}
                 transparent={false}
                 visible={this.state.modal}
-                onRequestClose={() => {alert("Modal has been closed.")}}
+                onRequestClose={() => this.setState({modal: false})}
             >
                 <CreatePost closeModal={() => this.setState({modal: false})} />
             </Modal>

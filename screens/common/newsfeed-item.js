@@ -13,6 +13,7 @@ import Colors from '../../constants/Colors';
 import {Ionicons} from '@exponent/vector-icons';
 import {randomProfile} from '../helpers';
 import moment from 'moment';
+import ImagePost from './image-post';
 
 import Button from './button';
 
@@ -83,12 +84,27 @@ export default class NewsFeedItem extends Component {
         })
     }
 
+    renderContent() {
+        const {data} = this.props;
+        if(data.type == 'image') {
+            return (
+                <ImagePost imageCount={data.images.length} images={data.images}/>
+            )
+        }
+
+        return (
+            <View style={styles.content}>
+                <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dapibus tincidunt massa, sit amet volutpat nisi imperdiet at. Morbi maximus, neque vitae posuere molestie, enim est posuere eros, at rutrum sem felis id nisl. Ut nec mi augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec tempor lectus facilisis, rutrum metus sed, volutpat felis. Fusce vitae dictum sapien, non facilisis nisl. Aenean elementum ante sed lectus sodales consequat in a mauris. Duis fermentum condimentum elit, vel suscipit purus lobortis in. Maecenas lorem quam, gravida in hendrerit pharetra, malesuada in elit.</Text>
+            </View>
+        )
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.content}>
+                <View>
                     {this.renderAvatar()}
-                    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dapibus tincidunt massa, sit amet volutpat nisi imperdiet at. Morbi maximus, neque vitae posuere molestie, enim est posuere eros, at rutrum sem felis id nisl. Ut nec mi augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec tempor lectus facilisis, rutrum metus sed, volutpat felis. Fusce vitae dictum sapien, non facilisis nisl. Aenean elementum ante sed lectus sodales consequat in a mauris. Duis fermentum condimentum elit, vel suscipit purus lobortis in. Maecenas lorem quam, gravida in hendrerit pharetra, malesuada in elit.</Text>
+                    {this.renderContent()}
                     {this.renderLikesAndComments()}
                     <View style={styles.line} />
                 </View>
@@ -108,16 +124,20 @@ const styles = StyleSheet.create({
 
     content: {
         padding: 16,
-        paddingBottom: 0,
+        paddingTop: 0,
+        paddingBottom: 0
     },
 
     line: {
-        paddingTop: 16,
+        margin: 16,
+        marginBottom: 0,
         borderColor: '#ddd',
         borderBottomWidth: StyleSheet.hairlineWidth
     },
 
     avatarContainer: {
+        padding: 16,
+        paddingBottom: 0,
         flexDirection: 'row',
         marginBottom: 10,
     },
@@ -146,6 +166,7 @@ const styles = StyleSheet.create({
 
     buttonContainer: {
         flexDirection: 'row',
+
         height: 36,
         borderBottomWidth: StyleSheet.hairlineWidth
     },
@@ -171,7 +192,8 @@ const styles = StyleSheet.create({
     },
 
     likesComments: {
-        paddingTop: 16,
+        padding: 16,
+        paddingBottom: 0,
         flexDirection: 'row',
         justifyContent: 'space-between'
     }

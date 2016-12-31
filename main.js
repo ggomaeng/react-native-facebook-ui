@@ -53,16 +53,16 @@ class AppContainer extends React.Component {
 
   render() {
     if (this.state.appIsReady) {
-      return (
-        <View style={styles.container}>
-          <NavigationProvider router={Router}>
-            <StackNavigation id="root" initialRoute={Router.getRoute('rootNavigation')} />
-          </NavigationProvider>
+        return (
+            <View style={styles.container}>
+              <NavigationProvider router={Router}>
+                <StackNavigation id="root" initialRoute={Router.getRoute('rootNavigation')} />
+              </NavigationProvider>
 
-          {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
-          {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
-        </View>
-      );
+                {Platform.OS === 'ios' && <StatusBar barStyle="light-content" />}
+                {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
+            </View>
+        );
     } else {
       return (
         <Exponent.Components.AppLoading />
