@@ -34,7 +34,12 @@ class AppContainer extends React.Component {
           require('./screens/img/bob.png'),
           require('./screens/img/cookiemonster.jpeg'),
           require('./screens/img/elmo.jpg'),
-          require('./screens/img/me.png')
+          require('./screens/img/me.png'),
+          require('./screens/img/1.jpg'),
+          require('./screens/img/2.jpg'),
+          require('./screens/img/3.jpg'),
+          require('./screens/img/4.jpg'),
+          require('./screens/img/5.jpg'),
         ],
         fonts: [
             Ionicons.font,

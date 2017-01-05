@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     },
 
     content: {
-        padding:ezgif.com-optimize.gif 16,
+        padding: 16,
         paddingTop: 0,
         paddingBottom: 0
     },
