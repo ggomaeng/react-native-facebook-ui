@@ -8,6 +8,10 @@ I was inspired by an app I use everyday--Facebook! :-)
 ###Demo
 ![demo](https://raw.githubusercontent.com/ggomaeng/react-native-facebook-ui/master/demo.gif)
 
+Working on images: (1/5/2017)
+
+![demo](https://raw.githubusercontent.com/ggomaeng/react-native-facebook-ui/master/demo2.gif)
+
 ## Try it out
 
 Try it with Exponent: https://getexponent.com/@sungwoopark95/react-native-facebook-ui

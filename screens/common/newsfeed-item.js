@@ -118,12 +118,13 @@ export default class NewsFeedItem extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: 'white',
         marginBottom: 10,
     },
 
     content: {
-        padding: 16,
+        padding:ezgif.com-optimize.gif 16,
         paddingTop: 0,
         paddingBottom: 0
     },

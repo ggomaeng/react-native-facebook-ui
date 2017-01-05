@@ -4,9 +4,6 @@ import {
   View,
 } from 'react-native';
 import {
-  Notifications,
-} from 'exponent';
-import {
   StackNavigation,
   TabNavigation,
   TabNavigationItem,
@@ -15,9 +12,7 @@ import {
   Ionicons,
 } from '@exponent/vector-icons';
 
-import Alerts from '../constants/Alerts';
 import Colors from '../constants/Colors';
-import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
 export default class RootNavigation extends React.Component {
 

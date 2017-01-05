@@ -63,12 +63,14 @@ const styles = StyleSheet.create({
 
     buttonItem: {
         flex: 1,
+        backgroundColor: 'transparent',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
     text: {
+        backgroundColor: 'transparent',
         fontSize: 14,
         fontWeight: '700',
         marginLeft: 8,

@@ -5,7 +5,6 @@ import {
 import Landing from '../screens/Landing';
 import LinksScreen from '../screens/LinksScreen';
 import ImageScreen from '../screens/imageScreen';
-
 import SettingsScreen from '../screens/SettingsScreen';
 import RootNavigation from './RootNavigation';
 
