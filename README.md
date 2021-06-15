@@ -2,7 +2,7 @@
 Pure javascript prototype of iOS Facebook UI for React Native framework. This only includes the newsfeed page--more to be updated in the future!
 This application may not run correctly on Android. Feel free to submit a pull reqeust for the fixed styling for Android version.
 
-# Sponsored by Spurwing
+## Sponsored by Spurwing
 
 ![img](https://github.com/ggomaeng/public/blob/main/spurwing-cover.png?raw=true)
 
