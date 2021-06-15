@@ -2,10 +2,25 @@
 Pure javascript prototype of iOS Facebook UI for React Native framework. This only includes the newsfeed page--more to be updated in the future!
 This application may not run correctly on Android. Feel free to submit a pull reqeust for the fixed styling for Android version.
 
-##Inspiration
+# Sponsored by Spurwing
+
+![img](https://github.com/ggomaeng/public/blob/main/spurwing-cover.png?raw=true)
+
+This repo is sponsored by Spurwing, where their API Makes Adding Scheduling Quick, Reliable and Scalable.
+
+- Scheduling API
+- Enterprise Scheduling API
+- Scheduling API for Business
+- Scheduling and Calendar Management API
+- Booking API
+
+Check them out [here](https://github.com/Spurwing/Appointment-Scheduling-API)!
+
+
+## Inspiration
 I was inspired by an app I use everyday--Facebook! :-)
 
-###Demo
+## #Demo
 ![demo](https://raw.githubusercontent.com/ggomaeng/react-native-facebook-ui/master/demo.gif)
 
 Working on images: (1/5/2017)
